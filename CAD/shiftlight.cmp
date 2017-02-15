@@ -1,0 +1,99 @@
+Cmp-Mod V01 Created by PcbNew   date = 2/13/2017 6:52:07 PM
+
+BeginCmp
+TimeStamp = 58A24114
+Path = /589CEDBF
+Reference = D1;
+ValeurCmp = D;
+IdModule  = Diodes_THT:D_DO-15_P12.70mm_Horizontal;
+EndCmp
+
+BeginCmp
+TimeStamp = 58A2411B
+Path = /589D2BEF
+Reference = LED1;
+ValeurCmp = CONN_01X03;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 58A24120
+Path = /589D1326
+Reference = P1;
+ValeurCmp = CONN_01X01;
+IdModule  = Connectors:1pin;
+EndCmp
+
+BeginCmp
+TimeStamp = 58A24127
+Path = /589CED65
+Reference = Q1;
+ValeurCmp = Q_NPN_BCE;
+IdModule  = TO_SOT_Packages_THT:TO-92_Inline_Wide;
+EndCmp
+
+BeginCmp
+TimeStamp = 58A2412D
+Path = /589CECD3
+Reference = R1;
+ValeurCmp = 3.3k;
+IdModule  = Resistors_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal;
+EndCmp
+
+BeginCmp
+TimeStamp = 58A24133
+Path = /589CED08
+Reference = R2;
+ValeurCmp = 10k;
+IdModule  = Resistors_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal;
+EndCmp
+
+BeginCmp
+TimeStamp = 58A24139
+Path = /589CFD56
+Reference = R3;
+ValeurCmp = 5;
+IdModule  = Resistors_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal;
+EndCmp
+
+BeginCmp
+TimeStamp = 58A2413F
+Path = /589CFD93
+Reference = R4;
+ValeurCmp = 7;
+IdModule  = Resistors_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal;
+EndCmp
+
+BeginCmp
+TimeStamp = 58A24145
+Path = /589D1EA3
+Reference = R5;
+ValeurCmp = 10k;
+IdModule  = Resistors_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal;
+EndCmp
+
+BeginCmp
+TimeStamp = 58A2414D
+Path = /589D1348
+Reference = U2;
+ValeurCmp = DG9421;
+IdModule  = Buttons_Switches_THT:SW_PUSH-12mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 58A242E4
+Path = /589CF11E
+Reference = IC1;
+ValeurCmp = ATTINY85-P;
+IdModule  = Housings_DIP:DIP-8_W7.62mm_Socket;
+EndCmp
+
+BeginCmp
+TimeStamp = 58A24451
+Path = /589CFC51
+Reference = U1;
+ValeurCmp = LM317K;
+IdModule  = TO_SOT_Packages_THT:TO-220_Horizontal;
+EndCmp
+
+EndListe
