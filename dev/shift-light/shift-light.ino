@@ -14,6 +14,7 @@
 #define PIN            4  //LED Data Pin
 #define BUTTON_PIN     3  //Pin for pushbutton
 #define NUMPIXELS      8  //number of leds connected
+#define YPIXELS        2  //number of LEDs to light yellow before reaching the shift point
 Bounce debouncer = Bounce();
 
 CRGB pixels[NUMPIXELS];
@@ -35,9 +36,6 @@ void setup() {
   pinMode(BUTTON_PIN, INPUT_PULLUP);
   debouncer.attach(BUTTON_PIN);
   debouncer.interval(5);
-//  Serial.begin(115200);        // connect to the serial port
-
-//  Serial.println("Frequency Counter"); //this is jsut for debugging so we can see what freq the controller is reading
 
   manual_igfreq = 100;
 
@@ -120,56 +118,28 @@ void loop() {
 
   //As you approach the shift point, light up
   if (igfreq >= 100 && igfreq < 216) {
+    
     for ( i = 0; (i < NUMPIXELS) && (i <= ((igfreq - 100) / 16)); i++) {
 
-      // pixels.Color takes RGB values, from 0,0,0 up to 255,255,255
-      if (i < 6) {
+      if (i < NUMPIXELS-YPIXELS) {
         pixels[i] = CRGB::Green;
-      }
-      if (igfreq > 196) {
+      } 
+      else if (i >= NUMPIXELS-YPIXELS){
         pixels[i] = CRGB::Yellow;
       }
-      if (igfreq > 212) {
-        pixels[i] = CRGB::Blue;
-      }
     }
-
-   //Useless code was here
   }
 
-  // If you're at the shift point, strobe blue
+  // If you're at target RPM, strobe blue
   else if (igfreq >= 216 && igfreq < 230) {
-    for ( i = 0; i < NUMPIXELS; i++) {
-      
-      pixels[i] = CRGB::Blue;
-      FastLED.show();
-    }
     
-    delay(10);
-    for (i = 0; i < NUMPIXELS; i++) {
-
-      pixels[i] = CRGB::Black;
-      FastLED.show();
-    }
-    delay(10);
+    strobe(CRGB::Blue, pixels);
   }
 
-  // If above target RPM, strobe red
+  // If you're past the target RPM, strobe red
   else if (igfreq >= 230) {
-    for ( i = 0; (i < NUMPIXELS); i++) {
-
-      pixels[i] = CRGB::Red;
-      FastLED.show();
-    }
-    delay(10);
-    for ( i = 0; (i < NUMPIXELS); i++) {
-      // pixels.Color takes RGB values, from 0,0,0 up to 255,255,255
-
-      pixels[i] = CRGB::Black;
-      FastLED.show();
-    }
     
-    delay(10);
+    strobe(CRGB::Red, pixels);
   }
 
   // Else, turn the strip off
@@ -180,3 +150,24 @@ void loop() {
     
     FastLED.show();
 }
+
+
+
+void strobe(CRGB color, CRGB pixels[]){
+  
+    for ( i = 0; (i < NUMPIXELS); i++) {
+
+      pixels[i] = color;
+      FastLED.show();
+    }
+    delay(10);
+    
+    for ( i = 0; (i < NUMPIXELS); i++) {
+
+      pixels[i] = CRGB::Black;
+      FastLED.show();
+    }
+    
+    delay(10);
+}
+
