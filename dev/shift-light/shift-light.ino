@@ -11,8 +11,8 @@
 #include <avr/power.h>
 #endif
 
-#define PIN            5  //LED Data Pin
-#define BUTTON_PIN     6
+#define PIN            4  //LED Data Pin
+#define BUTTON_PIN     3  //Pin for pushbutton
 #define NUMPIXELS      8  //number of leds connected
 Bounce debouncer = Bounce();
 
@@ -72,7 +72,7 @@ void loop() {
     brightness_state++;
     brightness_state = brightness_state % 3;
     if (brightness_state == 2){
-      FastLED.setBrightness(50);
+      FastLED.setBrightness(10);
     }
     else if (brightness_state == 0){
       FastLED.setBrightness(0);
